@@ -1,6 +1,6 @@
 type SearchResult= {
     result?:any,
-    priority:number
+    priority?:number
 
 }
 export {SearchResult}

@@ -11,7 +11,7 @@ const writeNasaData=(data:Array<object>)=>{
         writeFileSync(API_DATA as string,JSON.stringify(data),{flag:"w",encoding:"utf-8"})
     }
     catch(err){
-        console.log(`[-] Error While Writeing Fetch List Api ${err}`)
+        console.log(`[-] Error While Writeing Fetched Data From Nasa API ${err}`)
     }
 
 } 
@@ -26,7 +26,7 @@ const getNasaData=():Array<object>=>{
     }
     catch(err){
         console.log(`[-] Error While Reading Nasa Data ${err}`)
-        return []
+        return Array(0)
     }
 
 
