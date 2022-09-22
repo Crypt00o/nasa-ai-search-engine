@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    
+    <title>index</title>
+<script>
+    let getDataRaw; 
+    let postDataRaw;
+  
+    async function GET(path){
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload=function(){
+            getDataRaw =this.responseText;
+        }
+         await xhttp.open('GET', path, true);
+         xhttp.send();
+   
+    }
+    async function POST(path,params){
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload=function(){
+            postDataRaw =this.responseText;
+        }
+         await xhttp.open('POST', path, true);
+         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+         xhttp.send(params);
+         }
+
+let getdata=(getdata=getDataRaw)=>{return JSON.parse(getdata) }
+let postdata=(postdata=postDataRaw)=>{return JSON.parse(postdata) }
+</script>
+</head>
+<body>
+    
+</body>
+</html> 
