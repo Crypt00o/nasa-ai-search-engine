@@ -1,6 +1,7 @@
 import express, { Router } from 'express'
 import { welcomeMessage, notFound } from '../controllers/main.controller'
 import {join} from 'path'
+import {searchRouter} from '../routes/search'
 
 //Declareing Static Directory for Serving Static Files 
 
@@ -18,9 +19,12 @@ router.use('/static',express.static(staticDir))
 
 router.get('/', welcomeMessage)
 
+router.use("/api",searchRouter)
+
 // Response With Not Found for any invalid path
 
 router.all('/*', notFound)
+
 
 export default router
 

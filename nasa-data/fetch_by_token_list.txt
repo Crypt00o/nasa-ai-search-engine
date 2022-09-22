@@ -17,6 +17,7 @@ https://api.nasa.gov/planetary/earth/imagery
 https://api.nasa.gov/EPIC/api/natural/images
 https://api.nasa.gov/EPIC/api/natural/date
 https://api.nasa.gov/EPIC/api/natural/all
-https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI
-https://genelab-data.ndc.nasa.gov/genelab/data/glds/files
-
+https://exoplanetarchive.ipac.caltech.edu/cgi-bin/nstedAPI/nph-nstedAPI/
+https://genelab-data.ndc.nasa.gov/genelab/data/glds/files/
+https: //api.nasa.gov/insight_weather/
+https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos/

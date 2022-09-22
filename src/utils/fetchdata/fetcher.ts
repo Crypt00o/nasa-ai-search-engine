@@ -3,13 +3,14 @@ import { API_TOKEN } from "../../config";
 
 // Fetching Data With Fetch List & Api Token
 
-const fetcher=async(fetchList:Array<string>):Promise<Array<object>>=>{
+const fetcher=async(fetchList:Array<string>,byToken:boolean=true):Promise<Array<object>>=>{
     try{
       let fetched:Array<object>=[];
         for(let i=0;i<fetchList.length;i++){
             try{
+            
             const result=(await axios.get(fetchList[i].concat("?api_key=",API_TOKEN as string))).data
-
+            
             fetched.push(result)
             }
             catch(err:unknown){
