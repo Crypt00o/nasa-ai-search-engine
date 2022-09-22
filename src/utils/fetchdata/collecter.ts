@@ -8,7 +8,7 @@ const collecter=async()=>{
     let nextTime=Date.now()+parseInt(EXPIRE_DATA_FETCH as string)
     setTimeout(collecter,parseInt(EXPIRE_DATA_FETCH as string));
     writeNasaData(await fetcher(readFetchList() )) ;
-    console.log(`\n\n[+] Nasa Data Fetched Successfully At : ${(new Date()).toLocaleString()}\n[+] Next Fetch Will be After${(new Date(nextTime)).toLocaleString()}`)
+    console.log(`\n\n[+] Nasa Data Fetched Successfully At : ${(new Date()).toLocaleString()}\n[+] Next Fetch Will be On${(new Date(nextTime)).toLocaleString()}`)
 }
 
 export{collecter}
