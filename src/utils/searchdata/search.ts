@@ -25,11 +25,7 @@ const search=(query:Array<string>,nasaDataObj:any,founded:Array<unknown>):void=>
     let priority:number=0
     if(typeof nasaDataObj === "object" && nasaDataObj !==null){
     for(let i=0;i<Object.keys(nasaDataObj).length;i++){
-        
-        //if((nasaDataObj as any)[Object.keys(nasaDataObj)[i]] as string =="object"){
-          //  continue;
-            
-        //}
+    
         if(typeof nasaDataObj === "object" && typeof nasaDataObj !== null){
         
             if(typeof (nasaDataObj as any)[Object.keys(nasaDataObj)[i]] as string =="object" ){

@@ -12,8 +12,9 @@
     "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx}'",
     "lint": "eslint . --ext .ts"
   },
-  "keywords": [],
+  "keywords": ["search engine","NASA","NASA API"],
   "author": "Eslam Mohamed Elabd",
+  "origin":"Hackanoide @ Nasa Space Apps Hackathon",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.27.2",

@@ -1,14 +1,31 @@
 import {env} from "process"
 import {config} from "dotenv"
 import { resolve } from "path"
+import {mkdirSync,existsSync} from "fs"
 config()
-const {PORT,API_TOKEN,EXPIRE_DATA_FETCH}=env
+
+const {PORT,API_TOKEN,EXPIRE_DATA_FETCH,ORIGIN}=env
 const nasaData_Directory=resolve(__dirname,"..","./nasa-data")
+const assestsJsonDirectory=resolve(__dirname,"..","assests-json")
 
 
-// That,s Require makeing A nasa-data Directory at the root of the project with a fetch_list.txt contain nasa api
+//createing nasa-data dir if not exists
 
-const API_DATA=resolve(nasaData_Directory,"data.json") ,API_FETCH_LIST=resolve(nasaData_Directory,"fetch_by_token_list.txt")
+if(!(existsSync(nasaData_Directory))){
 
 
-export {PORT,API_DATA,API_FETCH_LIST,API_TOKEN,EXPIRE_DATA_FETCH}
+    try{
+        mkdirSync(nasaData_Directory)
+    }
+    catch(err:unknown){
+        console.log(`Can,t Create NASA Data Directory ${err}`)
+    }
+
+}
+
+
+
+const API_DATA=resolve(nasaData_Directory,"cached-data.json") ,API_FETCH_LIST=resolve(assestsJsonDirectory,"fetch-list.json"),STOP_WORDS=resolve(assestsJsonDirectory,"stop-words.json")
+
+
+export {ORIGIN,PORT,API_DATA,API_FETCH_LIST,API_TOKEN,EXPIRE_DATA_FETCH,STOP_WORDS}

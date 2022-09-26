@@ -32,6 +32,16 @@ const getNasaData=():Array<object>=>{
 
 }
 
+const getJsonData=(path:string):Array<object|string>=>{
+    try{
+        return JSON.parse(readFileSync(path as string,{flag:"r",encoding:"utf-8"}))
+    }
+    catch(err){
+        console.log(`[-] Error While Reading Nasa Data ${err}`)
+        return Array(0)
+    }
+}
+
 // Reading Nasa Api-toFetch-List
 
 const readFetchList=():Array<string>=>{
@@ -49,4 +59,4 @@ const readFetchList=():Array<string>=>{
 
 
 
-export{readFetchList,getNasaData,writeNasaData}
+export{readFetchList,getNasaData,writeNasaData,getJsonData}

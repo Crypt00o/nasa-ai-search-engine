@@ -2,11 +2,11 @@ import express, { Application} from 'express'
 import { collecter } from './utils/fetchdata/collecter'
 import * as dotenv from 'dotenv'
 import {myCustomizedLogger} from './middlewares/mylogger.middleware'
-import helmet from 'helmet'
 import router from './routes/index'
 import bodyParser from 'body-parser'
-
-dotenv.config()
+import {allowRemoteOriginCors}  from "./middlewares/allowRemoteOrigin"
+import helmet from 'helmet'
+import {PORT} from "./config"
 
 const app: Application = express()
 
@@ -15,11 +15,11 @@ const app: Application = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.use(allowRemoteOriginCors)
 
 //Secure Http Headers With By Setting Some  Verious Values And Xss Filter
 
-//app.use(helmet())
-app.use(helmet({contentSecurityPolicy:false}))
+app.use(helmet())
 
 //Logging Http Requests With My Customized MiddleWare
 
@@ -33,18 +33,14 @@ app.use(myCustomizedLogger)
 
 collecter()
 
-
-
 // Useing Routes And Api
 
 app.use(router)
 
 // starting Server
 
-const PORT: string | number = process.env.PORT || 3000
-
-app.listen(PORT, () => {
-  console.log(`[+] Server Listening Now at Port : ${PORT} `)
+app.listen(PORT||3000, () => {
+  console.log(`[+] Server Listening Now at Port : ${PORT} \n\n`)
 })
 
 export default app
