@@ -24,14 +24,22 @@
 
 - ### How To Use NASA AI Search Engine Api ?
     - #### by endpoint : 
-        - /api/?query=search&page=number
+        
+            /api/?query=search&page=number
         <br>
-        example: /api/?query=sun&page=1
+          
+            example: /api/?query=sun&page=1
+        
         <br>  
-        - /api/media/:media_type?query=search
+
+            /api/media/:media_type?query=search
+        
         <br>
+        
             example: /api/media/images?query=earth
+        
         <br>
+          
             example: /api/media/videos?query=earth            
 
 - ### Deployment 
@@ -39,4 +47,6 @@
         - ``` npm run start``` 
 
 <br> 
-- Deployment on (Cyclic) Service: https://nasa-ai-search-engine.cyclic.app/
+
+- Deployment on (Cyclic) Service:
+ [NASA AI Search Engine : https://nasa-ai-search-engine.cyclic.app/ ](https://nasa-ai-search-engine.cyclic.app/)
