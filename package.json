@@ -8,7 +8,7 @@
     "dev": "nodemon ./src/app.ts",
     "clean": "npx rimraf build/",
     "build": "npm install && npm run clean && npx tsc",
-    "start": "npm run build && node build/app.js",
+    "start": "node build/app.js && node ./build/app.js",
     "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx}'",
     "lint": "eslint . --ext .ts"
   },
