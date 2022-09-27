@@ -1,6 +1,5 @@
 import express, { Application} from 'express'
 import { collecter } from './utils/fetchdata/collecter'
-import * as dotenv from 'dotenv'
 import {myCustomizedLogger} from './middlewares/mylogger.middleware'
 import router from './routes/index'
 import bodyParser from 'body-parser'
@@ -23,11 +22,9 @@ app.use(helmet())
 
 //Logging Http Requests With My Customized MiddleWare
 
-if(process.env.NODE_ENV='dev'){
 
 app.use(myCustomizedLogger)
 
-}
 
 //  Fetching and ReFetching Data During a Custom Period
 

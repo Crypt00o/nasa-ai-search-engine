@@ -1,5 +1,5 @@
 import { Response, Request, NextFunction } from 'express'
-
+import { NODE_ENV } from '../config'
 // Define My Manual and Customized MiddleWare For identifying Http Requests
 
 const myCustomizedLogger = (req: Request, res: Response, next: NextFunction): void => {
@@ -38,7 +38,7 @@ const myCustomizedLogger = (req: Request, res: Response, next: NextFunction): vo
   }
 
   // Logging Request Every Incoming  HTTP Request
-
+if((NODE_ENV as string)==='dev'){
   console.log(
     `\nSome One Join Server ! -> {Method: ${req.method}},{Url: ${req.originalUrl}},{StatusCode: ${
       res.statusCode
@@ -48,6 +48,16 @@ const myCustomizedLogger = (req: Request, res: Response, next: NextFunction): vo
       req.ip
     }},{Public-IP: ${publicIP}},{Device: ${req.headers['user-agent']}}\n`
   )
+}
+
+else{
+
+		console.log(`${req.method} ${req.originalUrl} ${res.statusCode}  ${Date().toString().slice(4,24)}  ${publicIP} ${req.headers['user-agent']}`);
+
+
+
+}
+
 }
 
 export { myCustomizedLogger }

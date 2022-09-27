@@ -3,7 +3,7 @@ import { Request,Response } from "express";
 import { main,mainTotalSearch } from "../utils/main";
 import { mediaSearch } from "../utils/searchdata/searchMedia";
 import { SearchResult } from "../types/SearchResult";
-const searchResponser=(req:Request,res:Response)=>{
+const searchResponser=async(req:Request,res:Response):Promise<void>=>{
     try{
         
 const query:string=req.query.query as string;
@@ -11,7 +11,7 @@ const offset:number=(isNaN(parseInt(req.query.page as string)) ||parseInt(req.qu
 
 if(query){
 
-const result=main(query,offset);
+const result= await main(query,offset);
 res.status(200).json(result);
 }
 
@@ -24,7 +24,7 @@ else{
     }
 }
 
-const mediaSearchApi=(req:Request,res:Response)=>{
+const mediaSearchApi=async(req:Request,res:Response):Promise<void>=>{
 try{
 
 
@@ -32,7 +32,7 @@ const query:string=req.query.query as string;
 const offset:number=(isNaN(parseInt(req.query.page as string)) ||parseInt(req.query.page as string)<0 )? 0:parseInt(req.query.page as string)
 if(query){
 
-    const data:Array<SearchResult>=mainTotalSearch(query)
+    const data:Array<SearchResult>=await mainTotalSearch(query)
     if(req.params.media==="images"){
         const result=mediaSearch(data,offset,".ico$|.bmp$|.webp$|.svg$|.pjp$|.pjpeg$|.jfif$|.jpeg$|.jpg$|.gif$|.avif$|.apng$|.png$")
         res.status(200).json(result)
