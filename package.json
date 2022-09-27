@@ -2,13 +2,13 @@
   "name": "nasa-api",
   "version": "1.0.0",
   "description": "Nasa Api Search Engine ",
-  "main": "index.js",
+  "main": "build/app.js",
   "scripts": {
     "test": "npx tsc && jasmine",
     "dev": "nodemon ./src/app.ts",
     "clean": "npx rimraf build/",
     "build": "npm install && npm run clean && npx tsc",
-    "start": "npm run build &&  node build/app.js",
+    "start": "npm run build &&  node .",
     "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx}'",
     "lint": "eslint . --ext .ts"
   },
