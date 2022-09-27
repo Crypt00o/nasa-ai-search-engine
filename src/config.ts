@@ -3,6 +3,7 @@ import {config} from "dotenv"
 import { resolve } from "path"
 import {mkdirSync,existsSync} from "fs"
 import {S3} from "aws-sdk"
+import { isGeneratorFunction } from "util/types"
 config()
 
 const {
@@ -11,7 +12,7 @@ const {
 const nasaData_Directory=resolve(__dirname,"..","./nasa-data")
 const assestsJsonDirectory=resolve(__dirname,"..","assests-json")
 
-let S3_CLIENT:S3;
+let S3_CLIENT:S3, API_DATA:string;
 
 //createing nasa-data dir if not exists
 if((NODE_ENV as string)==="dev"){
@@ -31,7 +32,15 @@ S3_CLIENT=new S3();
 
 
 
-const API_DATA=resolve(nasaData_Directory,"cached-data.json") ,API_FETCH_LIST=resolve(assestsJsonDirectory,"fetch-list.json"),STOP_WORDS=resolve(assestsJsonDirectory,"stop-words.json")
+
+if(NODE_ENV==="dev"){
+ 	API_DATA=resolve(nasaData_Directory,"cached-data.json") 
+}
+else{
+	API_DATA="cached-data.json"
+}
+
+ const API_FETCH_LIST=resolve(assestsJsonDirectory,"fetch-list.json"),STOP_WORDS=resolve(assestsJsonDirectory,"stop-words.json")
 
 
 export {NODE_ENV,S3_CLIENT,S3_BUCKET,ORIGIN,PORT,API_DATA,API_FETCH_LIST,API_TOKEN,EXPIRE_DATA_FETCH,STOP_WORDS}
